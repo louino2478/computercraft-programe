@@ -1,227 +1,234 @@
 --reacteur mekanism!!!!!
 
 local pro
-locale la
-heure locale
-m = périphérique . wrap ( "monitor_0" )
-r = périphérique . wrap ( "Reactor Logic Adapter_1" )
-l = périphérique . wrap ( "Laser Amplifier_1" )
-chat = périphérique . wrap ( "chatBox_0" )
-h = périphérique . wrap ( "timeSensor_0" )
+local la
+local time
+m = peripheral.wrap("monitor_0")
+r = peripheral.wrap("Reactor Logic Adapter_1")
+l = peripheral.wrap("Laser Amplifier_1")
+chat = peripheral.wrap("chatBox_0")
+h = peripheral.wrap("timeSensor_0")
  
-m . setTextColor ( couleurs . blanc )
-m . clear ( )
-m . setCursorPos ( 1 , 1 )
-m . écrire ( "réacteur controleur 2000" )
-m . setCursorPos ( 1 , 2 )
-m . write ( "version 1.2" )
-m . setCursorPos ( 1 , 4 )
-m . write ( "ce programme est pour les" )
-m . setCursorPos ( 1 , 5 )
-m . écrire ( "de mekanime" )
-m . setCursorPos ( 1 , 7 )
-m . write ( "coder par louino" )
-dormir ( 5 )
+m.setTextColor(colors.white)
+m.clear()
+m.setCursorPos(1,1)
+m.write("reactor controleur 2000")
+m.setCursorPos(1,2)
+m.write("version 1.2")
+m.setCursorPos(1,4)
+m.write("ce programe est pour les")
+m.setCursorPos(1,5)
+m.write("de mekanime")
+m.setCursorPos(1,7)
+m.write("coder par louino")
+sleep(5)
 --fin du splach screen
-m . clear ( )
+m.clear()
  
-temps = h . getDate ( )
-handle = fs . open ( "log / log1" , "a" )
-gérer . writeLine ( "" )
-gérer . écrire ( heure . jour )
-gérer . écrire ( "/" )
-gérer . écrire ( temps . mois )
-gérer . écrire ( "/" )
-gérer . écrire ( temps . année )
-gérer . écrire ( "-" )
-gérer . écrire ( heure . minute )
-gérer . écrire ( ":" )
-gérer . écriture ( heure . heure )
-gérer . write ( "--- programe lancer" )
-gérer . fermer ( )
+time = h.getDate()
+handle = fs.open("log/log1", "a")
+handle.writeLine(" ")
+handle.write(time.day)
+handle.write("/")
+handle.write(time.month)
+handle.write("/")
+handle.write(time.year)
+handle.write(time.hour)
+handle.write(":")
+handle.write(time.minute)
+handle.write(" ---  programe lancer")
+handle.close()
  
-tout en vrai do
+while true do
  
---reacteur sur?
-m . setCursorPos ( 1 , 1 )
-m . setTextColor ( couleurs . blanc )
-m . écrire ( "reacteur:" )
-si r . isIgnited ( ) == true alors
- m . setTextColor ( couleurs . vert )
- m . écrire ( "ON" )
-autre
- m . setTextColor ( couleurs . rouge )
- m . écrire ( "OFF" )
-fin
+--reacteur on?
+m.setCursorPos(1,1)
+m.setTextColor(colors.white)
+m.write("reacteur : ")
+if r.isIgnited() == true then
+ m.setTextColor(colors.green)
+ m.write("ON")
+else
+ m.setTextColor(colors.red)
+ m.write("OFF")
+end
 --reacteur production
-m . setCursorPos ( 1 , 2 )
-m . setTextColor ( couleurs . blanc )
-m . écrire ( "production:" )
-m . setTextColor ( couleurs . gris )
-pro = r . getProducing ( ) / 25
-si pro < 1000 alors
- m . write ( r . getProducing ( ) / 25 )
- m . setCursorPos ( 17 , 2 )
- m . écrire ( "RF / t" )
-fin
-si pro > 1000 alors
- m . setCursorPos ( 14 , 2 )
- m . écrire ( r . getProducing ( ) / 25 / 100 )
- m . setCursorPos ( 17 , 2 )
- m . écrire ( "kRF / t" )
-fin
-si pro > 100000 alors
- m . setCursorPos ( 14 , 2 )
- m . écrire ( r . getProducing ( ) / 25 / 100000 )
- m . setCursorPos ( 17 , 2 )
- m . écrire ( "mRF / t" )
-fin
---lazer stockage enplifier
-m . setCursorPos ( 1 , 3 )
-m . setTextColor ( couleurs . blanc )
-m . écrire ( "laser energie:" )
-m . setTextColor ( couleurs . gris )
-la = l . getEnergy ( ) / 25
-si la < 1000 alors
- m . write ( l . getEnergy ( ) / 25 )
- m . setCursorPos ( 20 , 3 )
- m . écrire ( "RF" )
-fin
-si la > 1000 alors
- m . setCursorPos ( 17 , 3 )
- m . écrire ( l . getEnergy ( ) / 25 / 100 )
- m . setCursorPos ( 20 , 3 )
- m . écrire ( "kRF" )
-fin
-si la > 100000 alors
- m . setCursorPos ( 17 , 3 )
- m . écrire ( l . getEnergy ( ) / 25 / 100000 )
- m . setCursorPos ( 20 , 3 )
- m . écrire ( "mRF" )
-fin
-si la > 100000000 alors
- m . setCursorPos ( 17 , 3 )
- m . écrire ( l . getEnergy ( ) / 25 / 100000000 )
- m . setCursorPos ( 20 , 3 )
- m . écrire ( "gRF" )
-fin
-- stat amplificateur laser
- m . setCursorPos ( 1 , 4 )
- m . setTextColor ( couleurs . blanc )
- m . write ( "laser stat:" )
- m . setCursorPos ( 14 , 4 )
-si l . getEnergy ( ) / 25 / 100.000.000 > 1 puis
- m . setTextColor ( couleurs . jaune )
-autre
- m . setTextColor ( couleurs . orange )
-fin
- m . écrire ( "CHARGE EN COUR" )
-si l . getEnergy ( ) == 0 alors
- m . setCursorPos ( 14 , 4 )
- m . setTextColor ( couleurs . rouge )
- m . écrire ( "DECHARGER" )
-fin
-si l . getEnergy ( ) == l . getMaxEnergy ( ) puis
- m . setCursorPos ( 14 , 4 )
- m . setTextColor ( couleurs . vert )
- m . écrire ( "CHARGEE" )
- Redstone . setOutput ( "back" , true )
-autre
- Redstone . setOutput ( "retour" , false )
-fin
+m.setCursorPos(1,2)
+m.setTextColor(colors.white)
+m.write("production : ")
+m.setTextColor(colors.gray)
+pro = r.getProducing()/25
+if pro < 1000 then
+ m.write(r.getProducing()/25)
+ m.setCursorPos(17,2)
+ m.write(" RF/t               ")
+end
+if pro > 1000 then
+ m.setCursorPos(14,2)
+ m.write(r.getProducing()/25/100)
+ m.setCursorPos(17,2)
+ m.write("kRF/t               ")
+end
+if pro > 100000 then
+ m.setCursorPos(14,2)
+ m.write(r.getProducing()/25/100000)
+ m.setCursorPos(17,2)
+ m.write("mRF/t               ")
+end
+--lazer enplifier storage
+m.setCursorPos(1,3)
+m.setTextColor(colors.white)
+m.write("laser energie : ")
+m.setTextColor(colors.gray)
+la = l.getEnergy()/25
+if la < 1000 then
+ m.write(l.getEnergy()/25)
+ m.setCursorPos(20,3)
+ m.write(" RF                  ")
+end
+if la > 1000 then
+ m.setCursorPos(17,3)
+ m.write(l.getEnergy()/25/100)
+ m.setCursorPos(20,3)
+ m.write("kRF                  ")
+end
+if la > 100000 then
+ m.setCursorPos(17,3)
+ m.write(l.getEnergy()/25/100000)
+ m.setCursorPos(20,3)
+ m.write("mRF                  ")
+end
+if la > 100000000 then
+ m.setCursorPos(17,3)
+ m.write(l.getEnergy()/25/100000000)
+ m.setCursorPos(20,3)
+ m.write("gRF                  ")
+end
+--laser amplifier stat
+ m.setCursorPos(1,4)
+ m.setTextColor(colors.white)
+ m.write("laser stat : ")
+ m.setCursorPos(14,4)
+if l.getEnergy()/25/100000000 > 1 then
+ m.setTextColor(colors.yellow)
+else
+ m.setTextColor(colors.orange)
+end
+ m.write("CHARGE EN COUR")
+if l.getEnergy() == 0 then
+ m.setCursorPos(14,4)
+ m.setTextColor(colors.red)
+ m.write("DECHARGER         ")
+end
+if l.getEnergy() == l.getMaxEnergy() then
+ m.setCursorPos(14,4)
+ m.setTextColor(colors.green)
+ m.write("CHARGEE           ")
+ redstone.setOutput("back",true)
+else
+ redstone.setOutput("back",false)
+end
  
---demarage réacteur
-si r . isIgnited ( ) == false alors
- m . setCursorPos ( 9 , 12 )
- m . setTextColor ( couleurs . blanc )
- m . écrire ( "démarrer le réacteur" )
- si rs . getAnalogInput ( "right" ) ~ = 0 alors
-  si l . getEnergy ( ) == l . getMaxEnergy ( ) puis
-   m . setCursorPos ( 1 , 9 )
-   m . ecrire ( "demarage du reacteur" )
-   discuter . say ( "le réacteur s'allume" )
-   temps = h . getDate ( )
-   handle = fs . open ( "log / log1" , "a" )
-   gérer . writeLine ( "" )
-   gérer . écrire ( heure . jour )
-   gérer . écrire ( "/" )
-   gérer . écrire ( temps . mois )
-   gérer . écrire ( "/" )
-   gérer . écrire ( temps . année )
-   gérer . écrire ( "-" )
-   gérer . écrire ( heure . minute )
-   gérer . écrire ( ":" )
-   gérer . écriture ( heure . heure )
-   gérer . écrire ( "--- le réacteur vient de s'alumer" )
-   gérer . fermer ( )
-   rs . setOutput ( "bottom" , true )
-   r . setInjectionRate ( 4 )
-   dormir ( 10 )
-   rs . setOutput ( "left" , true )
-   dormir ( 2 )
-   rs . setOutput ( "left" , false )
-   dormir ( 1 )
-   rs . setOutput ( "bottom" , false )
-   m . clear ( )
-  autre
-   m . setCursorPos ( 1 , 9 )
-   m . setBackgroundColor ( couleurs . rouge )
-   m . setTextColor ( couleurs . blanc )
-   m . écrire ( "il y a pas asser d'energie" )
-   m . setCursorPos ( 1 , 10 )
-   m . écrire ( "dans les laser" )
-   m . setBackgroundColor ( couleurs . noir )
-   dormir ( 5 )
-   m . clear ( )
-  fin
- fin
-fin
-si r . isIgnited ( ) == true alors
- m . setCursorPos ( 9 , 12 )
- m . setTextColor ( couleurs . jaune )
- m . écrire ( "arrêter le réacteur" )
- si rs . getAnalogInput ( "right" ) ~ = 0 alors
-  si l . getEnergy ( ) == l . getMaxEnergy ( ) puis
-   m . setCursorPos ( 1 , 6 )
-   m . setTextColor ( couleurs . blanc )
-   m . écrire ( "arret en cours ..." )
-   discuter . say ( "le réacteur s'arrette" )
-   temps = h . getDate ( )
-   handle = fs . open ( "log / log1" , "a" )
-   gérer . writeLine ( "" )
-   gérer . écrire ( heure . jour )
-   gérer . écrire ( "/" )
-   gérer . écrire ( temps . mois )
-   gérer . écrire ( "/" )
-   gérer . écrire ( temps . année )
-   gérer . écrire ( "-" )
-   gérer . écrire ( heure . minute )
-   gérer . écrire ( ":" )
-   gérer . écriture ( heure . heure )
-   gérer . écrire ( "--- le reacteur vient de s'etaindre" )
-   gérer . fermer ( )
-   r . setInjectionRate ( 0 )
-   dormir ( 30 )
-   r . setInjectionRate ( 2 )
-   m . clear ( )
-  autre
-   m . setCursorPos ( 1 , 6 )
-   m . setBackgroundColor ( couleurs . rouge )
-   m . setTextColor ( couleurs . blanc )
-   m . écrire ( "il est pas conseiller de" )
-   m . setCursorPos ( 1 , 7 )
-   m . write ( "stoper le reacteur alors que" )
-   m . setCursorPos ( 1 , 8 )
-   m . écrire ( "les laser sont pas plein" )
-   m . setBackgroundColor ( couleurs . noir )
-   dormir ( 5 )
-   m . clear ( )
-  fin
- fin
-fin
+--demarage reacteur
+if r.isIgnited() == false then
+ m.setCursorPos(9,12)
+ m.setTextColor(colors.white)
+ m.write("start reactor")
+ if rs.getAnalogInput("right") ~= 0 then
+  if l.getEnergy() == l.getMaxEnergy() then
+   m.setCursorPos(1,9)
+   m.write("demarage du reacteur")
+   chat.say("le reacteur s'allume")
+   time = h.getDate()
+   handle = fs.open("log/log1", "a")
+   handle.writeLine(" ")
+   handle.write(time.day)
+   handle.write("/")
+   handle.write(time.month)
+   handle.write("/")
+   handle.write(time.year)
+   handle.write(" -- ")
+   handle.write(time.hour)
+   handle.write(":")
+   handle.write(time.minute)
+   handle.write(" ---  le reacteur vient de s'alumer")
+   handle.close()
+   rs.setOutput("bottom", true)
+   r.setInjectionRate(4)
+   sleep(10)
+   rs.setOutput("left", true)
+   sleep(2)
+   rs.setOutput("left", false)
+   sleep(1)
+   rs.setOutput("bottom", false)
+   m.clear()
+  else
+   m.setBackgroundColor(colors.red)
+   m.clear()
+   m.setTextColor(colors.white)
+   m.setCursorPos(12,5)
+   m.setBackgroundColor(colors.black)
+   m.write("ERREUR:")
+   m.setCursorPos(2,6)
+   m.write("il y a pas asser d'energie")
+   m.setCursorPos(7,7)
+   m.write("dans les laser")
+   m.setBackgroundColor(colors.black)
+   sleep(5)
+   m.clear()
+  end
+ end
+end
+if r.isIgnited() == true then
+ m.setCursorPos(9,12)
+ m.setTextColor(colors.yellow)
+ m.write("stop  reactor")
+ if rs.getAnalogInput("right") ~= 0 then
+  if l.getEnergy() == l.getMaxEnergy() then
+   m.setCursorPos(1,6)
+   m.setTextColor(colors.white)
+   m.write("arret en cours...")
+   chat.say("le reacteur s'arrette")
+   time = h.getDate()
+   handle = fs.open("log/log1", "a")
+   handle.writeLine(" ")
+   handle.write(time.day)
+   handle.write("/")
+   handle.write(time.month)
+   handle.write("/")
+   handle.write(time.year)
+   handle.write(" -- ")
+   handle.write(time.hour)
+   handle.write(":")
+   handle.write(time.minute)
+   handle.write(" ---  le reacteur vient de s'etaindre")
+   handle.close()
+   r.setInjectionRate(0)
+   sleep(30)
+   r.setInjectionRate(2)
+   m.clear()
+  else
+   m.setBackgroundColor(colors.red)
+   m.clear()
+   m.setTextColor(colors.white)
+   m.setCursorPos(12,5)
+   m.setBackgroundColor(colors.black)
+   m.write("ERREUR:")
+   m.setCursorPos(2,6)
+   m.write("il est pas conseiller de")
+   m.setCursorPos(1,7)
+   m.write("stoper le reacteur alors que")
+   m.setCursorPos(1,8)
+   m.write("les laser sont pas full")
+   m.setBackgroundColor(colors.black)
+   sleep(5)
+   m.clear()
+  end
+ end
+end
  
  
  
 --fin du programe
-dormir ( 0.5 )
-fin
+sleep(0.5)
+end
