@@ -1,3 +1,8 @@
+--red droite = bouton pour l'alumage/aret du reacteur
+--red bas = indique que le reacteru est en cour d'alumage
+--red gauche = controle de l'amplifieur de laser (red on = laser vers reacteur)
+--red ariere = controle de l'alimentation des laser (red on = laser off)
+
 local pro
 local la
 m = peripheral.wrap("monitor_0")
@@ -51,25 +56,25 @@ m.setTextColor(colors.gray)
 la = l.getEnergy()/25
 if la < 1000 then
  m.write(l.getEnergy()/25)
- m.setCursorPos(20,3)
+ m.setCursorPos(21,3)
  m.write(" RF                  ")
 end
 if la > 1000 then
  m.setCursorPos(17,3)
  m.write(l.getEnergy()/25/100)
- m.setCursorPos(20,3)
+ m.setCursorPos(21,3)
  m.write("kRF                  ")
 end
 if la > 100000 then
  m.setCursorPos(17,3)
  m.write(l.getEnergy()/25/100000)
- m.setCursorPos(20,3)
+ m.setCursorPos(21,3)
  m.write("mRF                  ")
 end
 if la > 100000000 then
  m.setCursorPos(17,3)
  m.write(l.getEnergy()/25/100000000)
- m.setCursorPos(20,3)
+ m.setCursorPos(21,3)
  m.write("gRF                  ")
 end
 --laser amplifier stat
