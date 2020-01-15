@@ -3,6 +3,7 @@
 --red gauche = controle de l'amplifieur de laser (red on = laser vers reacteur)
 --red ariere = controle de l'alimentation des laser (red on = laser off)
 
+local rate = 2 --ingection rate
 local pro
 local la
 m = peripheral.wrap("monitor_0")
@@ -112,7 +113,7 @@ if r.isIgnited() == false then
    m.setCursorPos(1,9)
    m.write("demarage du reacteur")
    rs.setOutput("bottom", true)
-   r.setInjectionRate(4)
+   r.setInjectionRate(rate)
    sleep(10)
    rs.setOutput("left", true)
    sleep(2)
@@ -144,7 +145,7 @@ if r.isIgnited() == true then
    m.write("arret en cours...")
    r.setInjectionRate(0)
    sleep(30)
-   r.setInjectionRate(2)
+   r.setInjectionRate(rate)
    m.clear()
   else
    m.setCursorPos(1,6)
