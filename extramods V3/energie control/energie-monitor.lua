@@ -1,4 +1,4 @@
-m = peripheral.wrap("monitor_1")
+m = peripheral.wrap("monitor_5")
 a = peripheral.wrap("Induction Matrix_1")--IM1
 b = peripheral.wrap("Induction Matrix_3")--IM2
 c = peripheral.wrap("Induction Matrix_2")--IM3
@@ -7,17 +7,17 @@ g = peripheral.wrap("Induction Matrix_5")--IM5
 h = peripheral.wrap("Induction Matrix_6")--IM6
 d = peripheral.wrap("Induction Matrix_0")--total
 local e
-
-
+ 
+ 
 while true do
 m.clear()
 m.setBackgroundColor(colors.black)
-
-
+ 
+ 
 --conso IM
 m.setTextColor(colors.white)
 m.setCursorPos(1,1)
-m.write("CONSO JOUEUR")
+m.write("CONSO BASE")
 m.setTextColor(colors.yellow)
 m.setCursorPos(1,2)
 m.write("IM1 ")
@@ -44,7 +44,7 @@ if e > 100000 then
  m.setCursorPos(17,2)
  m.write("mRF/t                  ")
 end
-
+ 
 m.setTextColor(colors.yellow)
 m.setCursorPos(1,3)
 m.write("IM2")
@@ -71,7 +71,7 @@ if e > 100000 then
  m.setCursorPos(17,3)
  m.write("mRF/t                  ")
 end
-
+ 
 m.setTextColor(colors.yellow)
 m.setCursorPos(1,4)
 m.write("IM3")
@@ -98,10 +98,10 @@ if e > 100000 then
  m.setCursorPos(17,4)
  m.write("mRF/t                  ")
 end
-
+ 
 m.setTextColor(colors.yellow)
 m.setCursorPos(1,5)
-m.write("latempete")
+m.write("IM4")
 m.setTextColor(colors.green)
 e = f.getOutput()/25
 if e == 0 then
@@ -125,10 +125,10 @@ if e > 100000 then
  m.setCursorPos(17,5)
  m.write("mRF/t                  ")
 end
-
+ 
 m.setTextColor(colors.yellow)
 m.setCursorPos(1,6)
-m.write("IM4")
+m.write("IM5")
 m.setTextColor(colors.green)
 e = g.getOutput()/25
 if e == 0 then
@@ -152,10 +152,10 @@ if e > 100000 then
  m.setCursorPos(17,6)
  m.write("mRF/t                  ")
 end
-
+ 
 m.setTextColor(colors.yellow)
 m.setCursorPos(1,7)
-m.write("IM5")
+m.write("IM6")
 m.setTextColor(colors.green)
 e = h.getOutput()/25
 if e == 0 then
@@ -179,9 +179,9 @@ if e > 100000 then
  m.setCursorPos(17,7)
  m.write("mRF/t                  ")
 end
-
+ 
 --*******************************************************************
-
+ 
 --conso totale
 m.setTextColor(colors.white)
 m.setCursorPos(1,10)
@@ -206,7 +206,7 @@ if e > 100000 then
  m.setCursorPos(19,10)
  m.write("mRF/t                  ")
 end
-
+ 
 --stockage
 m.setTextColor(colors.white)
 m.setCursorPos(1,11)
@@ -243,7 +243,7 @@ if e > 100000000000 then
  m.setCursorPos(19,11)
  m.write("tRF                  ")
 end
-
+ 
 --charge
 m.setTextColor(colors.white)
 m.setCursorPos(1,12)
@@ -268,7 +268,7 @@ if e > 100000 then
  m.setCursorPos(19,12)
  m.write("mRF/t                  ")
 end
-
+ 
 -- % stockage
 e = d.getEnergy()*100/d.getMaxEnergy()
 m.setTextColor(colors.purple)
@@ -276,8 +276,8 @@ m.setCursorPos(23,11)
 m.write(e)
 m.setCursorPos(28,11)
 m.write("%              ")
-
-
-
+ 
+ 
+ 
 sleep(1)
 end
