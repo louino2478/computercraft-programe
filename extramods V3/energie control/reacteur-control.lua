@@ -2,16 +2,25 @@
 --red bas = indique que le reacteru est en cour d'alumage
 --red gauche = controle de l'amplifieur de laser (red on = laser vers reacteur)
 --red ariere = controle de l'alimentation des laser (red on = laser off)
+--doit avoir un lecteur de disquette sur le reseau avec le fichier "data" contenan:
+--{
+--  key = "clée d'alumage"
+--  ingection_rate = 2,
+--}
 
-local rate = 2 --ingection rate
+local key = "clée d'alumage"
+local nulkey = "noneee"
 local pro
 local la
+local data
 m = peripheral.wrap("monitor_0")
 r = peripheral.wrap("Reactor Logic Adapter_0")
 l = peripheral.wrap("Laser Amplifier_0")
  
 m.setTextColor(colors.white)
 m.clear()
+ 
+ 
  
 while true do
  
@@ -109,58 +118,107 @@ if r.isIgnited() == false then
  m.setTextColor(colors.white)
  m.write("start reactor")
  if rs.getAnalogInput("right") ~= 0 then
-  if l.getEnergy() == l.getMaxEnergy() then
-   m.setCursorPos(1,9)
-   m.write("demarage du reacteur")
-   rs.setOutput("bottom", true)
-   r.setInjectionRate(rate)
-   sleep(10)
-   rs.setOutput("left", true)
-   sleep(2)
-   rs.setOutput("left", false)
-   sleep(1)
-   rs.setOutput("bottom", false)
-   m.clear()
-  else
-   m.setCursorPos(1,9)
-   m.setBackgroundColor(colors.red)
-   m.setTextColor(colors.white)
-   m.write("il y a pas asser d'energie")
-   m.setCursorPos(1,10)
-   m.write("dans les laser")
-   m.setBackgroundColor(colors.black)
-   sleep(5)
-   m.clear()
-  end
+  if fs.isDir("disk") == true then
+   local handle = assert(fs.open("disk/data", "r"), "Couldn't load file")
+   local input = handle.readAll()
+   handle.close()
+   data = textutils.unserialize(input)
+ else
+  data = { key = nulkey}  
+ end
+ if data.key == key then
+   if l.getEnergy() == l.getMaxEnergy() then
+    m.setCursorPos(1,9)
+    m.write("demarage du reacteur")
+    rs.setOutput("bottom", true)
+    r.setInjectionRate(data.ingection_rate)
+    sleep(10)
+    rs.setOutput("left", true)
+    sleep(2)
+    rs.setOutput("left", false)
+    sleep(1)
+    rs.setOutput("bottom", false)
+    m.clear()
+   else
+    m.setCursorPos(1,9)
+    m.setBackgroundColor(colors.red)
+    m.setTextColor(colors.white)
+    m.write("il y a pas asser d'energie")
+    m.setCursorPos(1,10)
+    m.write("dans les laser")
+    m.setBackgroundColor(colors.black)
+    sleep(5)
+    m.clear()
+   end
+ else
+    m.setCursorPos(1,6)
+    m.setBackgroundColor(colors.red)
+    m.setTextColor(colors.white)
+    m.write("disquette de demarage")
+    m.setCursorPos(1,7)
+    m.write("non detecter.")
+    m.setCursorPos(1,8)
+    m.write("merci de mettre la")
+    m.setCursorPos(1,9)
+    m.write("disquette dans le lecteur.")
+    m.setBackgroundColor(colors.black)
+    sleep(5)
+    m.clear()
  end
 end
+end
+ 
 if r.isIgnited() == true then
  m.setCursorPos(9,12)
  m.setTextColor(colors.yellow)
  m.write("stop  reactor")
- if rs.getAnalogInput("right") ~= 0 then
-  if l.getEnergy() == l.getMaxEnergy() then
-   m.setCursorPos(1,6)
-   m.setTextColor(colors.white)
-   m.write("arret en cours...")
-   r.setInjectionRate(0)
-   sleep(30)
-   r.setInjectionRate(rate)
-   m.clear()
-  else
-   m.setCursorPos(1,6)
-   m.setBackgroundColor(colors.red)
-   m.setTextColor(colors.white)
-   m.write("il est pas conseiller de")
-   m.setCursorPos(1,7)
-   m.write("stoper le reacteur alors que")
-   m.setCursorPos(1,8)
-   m.write("les laser sont pas full")
-   m.setBackgroundColor(colors.black)
-   sleep(5)
-   m.clear()
-  end
+  if rs.getAnalogInput("right") ~= 0 then
+    if fs.isDir("disk") == true then
+    local handle = assert(fs.open("disk/data", "r"), "Couldn't load file")
+    local input = handle.readAll()
+    handle.close()
+    data = textutils.unserialize(input)
+   else
+    data = { key = nulkey}  
+   end
+   if data.key == key then
+   if l.getEnergy() == l.getMaxEnergy() then
+    m.setCursorPos(1,6)
+    m.setTextColor(colors.white)
+    m.write("arret en cours...")
+    r.setInjectionRate(0)
+    sleep(30)
+    r.setInjectionRate(data.ingection_rate)
+    m.clear()
+   else
+    m.setCursorPos(1,6)
+    m.setBackgroundColor(colors.red)
+    m.setTextColor(colors.white)
+    m.write("il est pas conseiller de")
+    m.setCursorPos(1,7)
+    m.write("stoper le reacteur alors que")
+    m.setCursorPos(1,8)
+    m.write("les laser sont pas full")
+    m.setBackgroundColor(colors.black)
+    sleep(5)
+    m.clear()
+   end
+ else
+     m.setCursorPos(1,6)
+    m.setBackgroundColor(colors.red)
+    m.setTextColor(colors.white)
+    m.write("disquette de demarage")
+    m.setCursorPos(1,7)
+    m.write("non detecter.")
+    m.setCursorPos(1,8)
+    m.write("merci de mettre la")
+    m.setCursorPos(1,9)
+    m.write("disquette dans le lecteur.")
+    m.setBackgroundColor(colors.black)
+    sleep(5)
+    m.clear()
  end
+end
 end
  
  
