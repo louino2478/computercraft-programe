@@ -7,7 +7,6 @@
 --  key = "clée d'alumage"
 --  ingection_rate = 2,
 --}
-
 local key = "clée d'alumage"
 local nulkey = "noneee"
 local pro
@@ -111,6 +110,18 @@ if l.getEnergy() == l.getMaxEnergy() then
 else
  redstone.setOutput("back",false)
 end
+--afichier ingection rate
+m.setCursorPos(1,5)
+m.setTextColor(colors.white)
+m.write("ingection rate: ")
+m.setTextColor(colors.gray)
+m.write(r.getInjectionRate())
+ 
+ 
+ 
+ 
+ 
+ 
  
 --demarage reacteur
 if r.isIgnited() == false then
