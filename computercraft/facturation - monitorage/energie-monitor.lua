@@ -2,9 +2,7 @@ m = peripheral.wrap("monitor_1")
 a = peripheral.wrap("Induction Matrix_1")--13roro
 b = peripheral.wrap("Induction Matrix_3")--louloc
 c = peripheral.wrap("Induction Matrix_2")--louino
-f = peripheral.wrap("Induction Matrix_4")--latempete
 g = peripheral.wrap("Induction Matrix_5")--alexxpro
-h = peripheral.wrap("Induction Matrix_6")--kiesta07
 d = peripheral.wrap("Induction Matrix_0")--total
 local e
 
@@ -116,34 +114,6 @@ data.consolouino = e/1000000000+data.consolouino
 
 m.setTextColor(colors.yellow)
 m.setCursorPos(1,5)
-m.write("latempete")
-m.setTextColor(colors.green)
-e = f.getOutput()/25
-if e == 0 then
-m.setTextColor(colors.red)
-end
-if e < 1000 then
- m.setCursorPos(12,5)
- m.write(f.getOutput()/25*10)
- m.setCursorPos(17,5)
- m.write(" RF/t                  ")
-end
-if e > 1000 then
- m.setCursorPos(12,5)
- m.write(f.getOutput()/25/100)
- m.setCursorPos(17,5)
- m.write("kRF/t                  ")
-end
-if e > 100000 then
- m.setCursorPos(12,5)
- m.write(f.getOutput()/25/100000)
- m.setCursorPos(17,5)
- m.write("mRF/t                  ")
-end
-data.consolatempete = e/1000000000+data.consolatempete
-
-m.setTextColor(colors.yellow)
-m.setCursorPos(1,6)
 m.write("alexxpro")
 m.setTextColor(colors.green)
 e = g.getOutput()/25
@@ -151,52 +121,24 @@ if e == 0 then
 m.setTextColor(colors.red)
 end
 if e < 1000 then
- m.setCursorPos(12,6)
+ m.setCursorPos(12,5)
  m.write(g.getOutput()/25*10)
- m.setCursorPos(17,6)
+ m.setCursorPos(17,5)
  m.write(" RF/t                  ")
 end
 if e > 1000 then
- m.setCursorPos(12,6)
+ m.setCursorPos(12,5)
  m.write(g.getOutput()/25/100)
- m.setCursorPos(17,6)
+ m.setCursorPos(17,5)
  m.write("kRF/t                  ")
 end
 if e > 100000 then
- m.setCursorPos(12,6)
+ m.setCursorPos(12,5)
  m.write(g.getOutput()/25/100000)
- m.setCursorPos(17,6)
+ m.setCursorPos(17,5)
  m.write("mRF/t                  ")
 end
 data.consoalexxpro = e/1000000000+data.consoalexxpro
-
-m.setTextColor(colors.yellow)
-m.setCursorPos(1,7)
-m.write("none")
-m.setTextColor(colors.green)
-e = h.getOutput()/25
-if e == 0 then
-m.setTextColor(colors.red)
-end
-if e < 1000 then
- m.setCursorPos(12,7)
- m.write(h.getOutput()/25*10)
- m.setCursorPos(17,7)
- m.write(" RF/t                  ")
-end
-if e > 1000 then
- m.setCursorPos(12,7)
- m.write(h.getOutput()/25/100)
- m.setCursorPos(17,7)
- m.write("kRF/t                  ")
-end
-if e > 100000 then
- m.setCursorPos(12,7)
- m.write(h.getOutput()/25/100000)
- m.setCursorPos(17,7)
- m.write("mRF/t                  ")
-end
-data.consonone = e/1000000000+data.consonone
 
 --*******************************************************************
 
@@ -301,8 +243,7 @@ local handle = assert(fs.open("disk2/vars", "w"), "Couldn't save vars")
 handle.write(output)
 handle.close()
 
---------- --roro = 2 --louloc = 3 --latempete = 5 --alexxpro = 6 --kiesta07 = 7
-decotext(7)
+--------- --roro = 2 --louloc = 3 --alexxpro = 4
 --decotext(6)
 ---------
 
