@@ -239,7 +239,7 @@ m.write("%              ")
 
 -- sauvegarde des donner sur la disquette
 local output = textutils.serialize(data)
-local handle = assert(fs.open("disk2/vars", "w"), "Couldn't save vars")
+local handle = assert(fs.open("disk2/vars.txt", "w"), "Couldn't save vars")
 handle.write(output)
 handle.close()
 
