@@ -19,7 +19,7 @@ m.setBackgroundColor(colors.black)
 
 
 --lecture des donnee de la diskette
-local handle = assert(fs.open("disk2/vars", "r"), "Couldn't load vars")
+local handle = assert(fs.open("disk2/vars.txt", "r"), "Couldn't load vars")
 local input = handle.readAll()
 handle.close()
 local data = textutils.unserialize(input)
