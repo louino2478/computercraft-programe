@@ -47,13 +47,13 @@ p.endPage()
 end
 
 if data.consolouloc ~= 0 then 
-  printfacture("louloc", data.consolouloc*80)
+  printfacture("louloc", math.ceil(data.consolouloc*80))
 end
 if data.consororo ~= 0 then 
-  printfacture("13roro_fermier", data.consororo*80)
+  printfacture("13roro_fermier", math.ceil(data.consororo*80))
 end
 if data.consoalexxpro ~= 0 then 
-  printfacture("alexxpro", data.consoalexxpro*80)
+  printfacture("alexxpro", math.ceil(data.consoalexxpro*80))
 end
 
 p.newPage()
@@ -63,13 +63,13 @@ p.write("compte rendu de J"..data.date.." à J"..os.day())
 p.setCursorPos(1,2)
 p.write("")
 p.setCursorPos(1,3)
-p.write("13roro   --> "..data.consororo*80)
+p.write("13roro   --> "..math.ceil(data.consororo*80))
 p.setCursorPos(1,4)
-p.write("louloc   --> "..data.consolouloc*80)
+p.write("louloc   --> "..math.ceil(data.consolouloc*80))
 p.setCursorPos(1,5)
-p.write("louino   --> "..data.consolouino*80)
+p.write("louino   --> "..math.ceil(data.consolouino*80))
 p.setCursorPos(1,6)
-p.write("alexxpro --> "..data.consoalexxpro*80)
+p.write("alexxpro --> "..math.ceil(data.consoalexxpro*80))
 p.setCursorPos(1,7)
 p.write("")
 p.setCursorPos(1,8)
