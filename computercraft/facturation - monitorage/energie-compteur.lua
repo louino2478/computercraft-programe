@@ -1,6 +1,6 @@
 m = peripheral.wrap("monitor_2")
 while true do
-local handle = assert(fs.open("disk/vars", "r"), "Couldn't load var")
+local handle = assert(fs.open("disk/vars.txt", "r"), "Couldn't load var")
 local input = handle.readAll()
 handle.close()
 local data = textutils.unserialize(input)
