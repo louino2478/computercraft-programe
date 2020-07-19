@@ -4,7 +4,7 @@ while true do
   m.clear()
   m.setCursorPos(2,2)
   m.write("J")
-  m.write(os.day())
+  m.write(math.ceil(os.day()))
   m.setCursorPos(2,3)
   m.write(textutils.formatTime(os.time(), true))
   m.setCursorPos(2,4)
