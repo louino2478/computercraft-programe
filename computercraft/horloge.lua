@@ -1,4 +1,4 @@
-m = peripheral.wrap("left")
+m = peripheral.find("monitor")
  
 while true do
   m.clear()
