@@ -9,7 +9,7 @@ le mod computercraft étant abandonner par son créateur,
 il faut utiliser [cc-tweaked](https://github.com/SquidDev-CC/CC-Tweaked) qui est un fork de [computercraft](https://github.com/dan200/ComputerCraft) maintenus a jour.
 
 **NOTE 2 :**
-sertain programe comme [splach-screen.lua](https://github.com/louino2478/computercraft-programe/blob/master/computercraft/splach-screen.lua "splach-screen.lua"), [energie-control](https://github.com/louino2478/computercraft-programe/tree/master/computercraft/energie-control "energie-control") ou
+certains programe comme [splach-screen.lua](https://github.com/louino2478/computercraft-programe/blob/master/computercraft/splach-screen.lua "splach-screen.lua"), [energie-control](https://github.com/louino2478/computercraft-programe/tree/master/computercraft/energie-control "energie-control") ou
 [facturation-monitorage](https://github.com/louino2478/computercraft-programe/tree/master/computercraft/facturation-monitorage "facturation-monitorage") sont des code pour un serveur mc priver donc je ne effectuer AUCUN support pour eux.
 
 ## index
