@@ -14,7 +14,7 @@ term.redirect(m)
 while true do
     RF = r.getEnergyStored() * 100
     RF = RF / r.getEnergyCapacity()
-    RL = r.getControlRodLevel(1)
+    RL = r.getControlRodLevel(0)
     --print("RL = "..RL.."  |  RF = "..RF)
     
     if RF < 50 and RL ~= 0 then
@@ -100,8 +100,8 @@ while true do
     m.setCursorPos(10,8)
     m.write("                   ")
     m.setCursorPos(11,8)
-    m.write(r.getControlRodLevel(1).."%")
-    local var = r.getControlRodLevel(1)
+    m.write(r.getControlRodLevel(0).."%")
+    local var = r.getControlRodLevel(0)
     local mvar = 100
     var = var * 16
     var = var / mvar
