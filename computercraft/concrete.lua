@@ -1,3 +1,4 @@
+turtle.select(1)
 while true do
     if turtle.getItemCount() == 0 then
         if turtle.getSelectedSlot() == 15 then
