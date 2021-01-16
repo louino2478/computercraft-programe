@@ -49,10 +49,10 @@ while true do
     end
     m.setCursorPos(1,sizeh/2+1)
     m.setBackgroundColor(colors.green)
-    m.write("input")
+    m.write("input  "..(im.getInput()/25000).."kRF/t")
     m.setCursorPos(1,sizeh/2)
     m.setBackgroundColor(colors.red)
-    m.write("output")
+    m.write("output  "..(im.getOutput()/25000).."kRF/t")
   end
   sleep(0.5)
 end
