@@ -4,8 +4,8 @@ local input = {}
 local output = {}
 local i
 local n
-local sizew, sizeh = m.getSize()
 m.setTextScale(0.5)
+local sizew, sizeh = m.getSize()
 i = 0
 while i < sizew+1 do
   i = i + 1
