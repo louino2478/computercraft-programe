@@ -27,10 +27,10 @@ while true do
     
     if RF < 55 and RF > 50 then
     
-        if RF > oldRF then
+        if RF > oldRF and RL ~= 100 then
             RL = RL+1
         end
-        if RF < oldRF then
+        if RF < oldRF and RL ~= 0 then
             RL = RL-1
         end
     end
