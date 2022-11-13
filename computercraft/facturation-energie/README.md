@@ -6,3 +6,4 @@ resetdatabase.lua -> connecteur au floppy disk -> permet de remettre a zero la b
 
 monitor.lua -> connecter au floppy disk et a un monitor -> permet de afichier les conso en temp reel et la conso total pour chaque joueur.
 
+printfacture.lua -> pour imprimer les facture
