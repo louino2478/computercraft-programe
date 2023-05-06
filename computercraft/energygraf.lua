@@ -1,5 +1,5 @@
-im = peripheral.wrap("left")
-m = peripheral.wrap("monitor_0")
+im = peripheral.wrap("inductionPort_0")
+m = peripheral.wrap("right")
 local input = {}
 local output = {}
 local i
@@ -19,8 +19,10 @@ while true do
     input[i] = input[i+1]
     output[i] = output[i+1]
   end
-  input[sizew+1] = math.floor(im.getInput() * (sizeh/2-1) / im.getTransferCap())
-  output[sizew+1] = math.floor(im.getOutput() * (sizeh/2-1) / im.getTransferCap())
+  input[sizew+1] = math.floor(im.getLastInput() * (sizeh/2-1) / im.getTransferCap())
+  output[sizew+1] = math.floor(im.getLastOutput() * (sizeh/2-1) / im.getTransferCap())
+  rawinput=mekanismEnergyHelper.joulesToFE(im.getLastInput())
+  rawoutput=mekanismEnergyHelper.joulesToFE(im.getLastOutput())
   
   m.setBackgroundColor(colors.black)
   m.clear()
@@ -49,10 +51,10 @@ while true do
     end
     m.setCursorPos(1,sizeh/2+1)
     m.setBackgroundColor(colors.green)
-    m.write("input  "..(im.getInput()/25000).."kRF/t")
+    m.write("input  "..(rawinput/1000).."kFE/t")
     m.setCursorPos(1,sizeh/2)
     m.setBackgroundColor(colors.red)
-    m.write("output  "..(im.getOutput()/25000).."kRF/t")
+    m.write("output  "..(rawoutput/1000).."kFE/t")
   end
-  sleep(0.5)
+  sleep(10)
 end
